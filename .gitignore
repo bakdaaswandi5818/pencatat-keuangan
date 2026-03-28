@@ -1,0 +1,16 @@
+# Compiled binary
+bin/
+
+# SQLite database files
+*.db
+*.db-shm
+*.db-wal
+
+# Go test cache
+*.test
+
+# Editor / OS artefacts
+.DS_Store
+.idea/
+.vscode/
+*.swp

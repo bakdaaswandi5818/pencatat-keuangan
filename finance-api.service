@@ -1,0 +1,24 @@
+[Unit]
+Description=Financial Transaction Tracker API
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+WorkingDirectory=/opt/finance-api
+ExecStart=/opt/finance-api/bin/finance-api
+Restart=on-failure
+RestartSec=5s
+
+# Environment variables – override as needed
+Environment=ADDR=:8080
+Environment=DB_PATH=/opt/finance-api/finance.db
+# API_KEY should be supplied securely, e.g. via EnvironmentFile:
+# EnvironmentFile=/etc/finance-api/finance-api.env
+
+# Security hardening
+PrivateTmp=true
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target
