@@ -7,8 +7,10 @@ REST API pencatat keuangan menggunakan Go (Echo v4), GORM, dan SQLite.
 Semua endpoint API (kecuali `/health`) membutuhkan header:
 
 ```
-Authorization: Bearer <API_KEY>
+Authorization: Bearer <API_KEY>-YYYYMMDD
 ```
+
+Format `YYYYMMDD` mengikuti tanggal UTC saat request diproses.
 
 Set `API_KEY` lewat environment variable saat menjalankan aplikasi.
 
@@ -19,6 +21,12 @@ API_KEY=my-secret-key CGO_ENABLED=1 go run cmd/main.go
 ```
 
 `API_KEY` wajib diisi. Aplikasi akan gagal start jika `API_KEY` kosong.
+
+Jika hari ini (UTC) `20260328`, maka header yang valid:
+
+```
+Authorization: Bearer my-secret-key-20260328
+```
 
 ## Build Linux (SQLite butuh CGO)
 
