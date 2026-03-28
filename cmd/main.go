@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"os"
 	"os/signal"
+	"strings"
 	"syscall"
 	"time"
 
@@ -59,6 +60,11 @@ func main() {
 			return nil
 		},
 	}))
+	apiKey := strings.TrimSpace(os.Getenv("API_KEY"))
+	if apiKey == "" {
+		log.Fatal("API_KEY is required")
+	}
+	e.Use(handler.APIKeyAuthMiddleware(apiKey))
 
 	txHandler.Register(e)
 

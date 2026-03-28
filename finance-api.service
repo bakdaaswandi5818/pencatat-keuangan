@@ -13,6 +13,8 @@ RestartSec=5s
 # Environment variables – override as needed
 Environment=ADDR=:8080
 Environment=DB_PATH=/opt/finance-api/finance.db
+# API_KEY should be supplied securely, e.g. via EnvironmentFile:
+# EnvironmentFile=/etc/finance-api/finance-api.env
 
 # Security hardening
 PrivateTmp=true
